@@ -22,7 +22,9 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<ProductResponse> findAllSortedByPrice() {
 
-        return null;
+        return productRepository.findAllByOrderByPriceDesc().stream()
+                    .map(ProductResponse::fromEntity)
+                    .toList();
     }
 
     @Override

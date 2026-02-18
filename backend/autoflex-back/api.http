@@ -5,10 +5,14 @@ POST {{baseUrl}}/products
 Content-Type: application/json
 
 {
-    "code": "P003",
+    "code": "P002",
     "name": "product test3 ",
-    "price": 10.5
+    "price": 12.15
 }
+
+### Return all products
+GET {{baseUrl}}/products
+Content-Type: application/json
 
 ### Delete product
 DELETE {{baseUrl}}/products/2
