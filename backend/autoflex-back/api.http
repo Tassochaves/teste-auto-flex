@@ -23,11 +23,15 @@ POST {{baseUrl}}/materials
 Content-Type: application/json
 
 {
-    "code": "RM002",
+    "code": "RM004",
     "name": "Material test",
-    "stockQuantity": 1.5
+    "stockQuantity": 5.5
 }
 
 ### Delete materials
 DELETE {{baseUrl}}/materials/1
+Content-Type: application/json
+
+### Return all materials
+GET {{baseUrl}}/materials
 Content-Type: application/json

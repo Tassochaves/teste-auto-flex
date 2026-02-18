@@ -38,14 +38,14 @@ public class ProductController {
     public ResponseEntity<MessageResponse> deleteProduct(@PathVariable Long id){
 
         MessageResponse response = productService.delete(id);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping
     public ResponseEntity<List<ProductResponse>> findAllSortedByPrice(){
-        
+
         List<ProductResponse> products = productService.findAllSortedByPrice();
-        return ResponseEntity.ok(products);
+        return ResponseEntity.status(HttpStatus.OK).body(products);
     }
 
 }

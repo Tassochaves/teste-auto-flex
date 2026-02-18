@@ -23,7 +23,9 @@ public class RawMaterialServiceImpl implements RawMaterialService{
 
     @Override
     public List<RawMaterialResponse> findAll() {
-        return null;
+        return rawMaterialRepository.findAll().stream()
+                .map(RawMaterialResponse::fromEntity)
+                .toList();
     }
 
     @Override
