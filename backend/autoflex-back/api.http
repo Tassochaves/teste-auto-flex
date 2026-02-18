@@ -6,6 +6,16 @@ Content-Type: application/json
 
 {
     "code": "P002",
-    "name": "Test product",
+    "name": "product test ",
     "price": 10.5
+}
+
+### Creates raw materials
+POST {{baseUrl}}/materials
+Content-Type: application/json
+
+{
+    "code": "RM001",
+    "name": "Material test",
+    "stockQuantity": 1.5
 }

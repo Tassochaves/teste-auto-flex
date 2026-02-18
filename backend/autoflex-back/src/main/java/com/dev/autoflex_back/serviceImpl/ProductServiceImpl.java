@@ -36,10 +36,11 @@ public class ProductServiceImpl implements ProductService{
             throw new RuntimeException("Product code already exists: " + request.code());
         }
 
-        Product product = new Product();
-        product.setCode(request.code());
-        product.setName(request.name());
-        product.setPrice(request.price());
+        Product product = Product.builder()
+            .code(request.code())
+            .name(request.name())
+            .price(request.price())
+            .build();
 
         return ProductResponse.fromEntity(productRepository.save(product));
     }
