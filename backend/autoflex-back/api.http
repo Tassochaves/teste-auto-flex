@@ -5,10 +5,14 @@ POST {{baseUrl}}/products
 Content-Type: application/json
 
 {
-    "code": "P002",
-    "name": "product test ",
+    "code": "P003",
+    "name": "product test3 ",
     "price": 10.5
 }
+
+### Delete product
+DELETE {{baseUrl}}/products/2
+Content-Type: application/json
 
 ### Creates raw materials
 POST {{baseUrl}}/materials

@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.dev.autoflex_back.dto.request.ProductRequest;
+import com.dev.autoflex_back.dto.response.MessageResponse;
 import com.dev.autoflex_back.dto.response.ProductResponse;
 import com.dev.autoflex_back.entity.Product;
 import com.dev.autoflex_back.repository.ProductRepository;
@@ -51,8 +52,13 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void delete(Long id) {
-        
+    public MessageResponse delete(Long id) {
+       if(!productRepository.existsById(id)){
+            throw new RuntimeException("Product not found");
+       }
+
+       productRepository.deleteById(id);
+       return new MessageResponse("Product deleted successfully");
     }
 
 }
