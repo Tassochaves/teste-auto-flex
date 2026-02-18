@@ -8,10 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,8 +23,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "products")
-public class Product {
+@Table(name = "raw_materials")
+public class RawMaterial {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,13 +34,12 @@ public class Product {
     @Column(nullable = false, unique = true)
     private String code;
 
-    @NotBlank(message = "Product name is required")
+    @NotBlank(message = "Material name is required")
     @Column(nullable = false)
     private String name;
 
-    @NotNull(message = "Price is required")
-    @Positive(message = "Price must be greater than zero")
-    @Digits(integer = 13, fraction = 2)
-    @Column(nullable = false, precision = 15, scale = 2)
-    private BigDecimal price;
+    @NotNull(message = "Stock quantity is required")
+    @PositiveOrZero(message = "Stock quantity cannot be negative")
+    @Column(name = "stock_quantity", nullable = false, precision = 15, scale = 3)
+    private BigDecimal stockQuantity;
 }
