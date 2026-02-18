@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.dev.autoflex_back.dto.request.RawMaterialRequest;
+import com.dev.autoflex_back.dto.response.MessageResponse;
 import com.dev.autoflex_back.dto.response.RawMaterialResponse;
 
 public interface RawMaterialService {
@@ -12,5 +13,5 @@ public interface RawMaterialService {
     RawMaterialResponse findById(Long id);
     RawMaterialResponse create(RawMaterialRequest request);
     RawMaterialResponse updateStock(Long id, BigDecimal newQuantity);
-    void delete(Long id);
+    MessageResponse delete(Long id);
 }

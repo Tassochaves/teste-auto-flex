@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.dev.autoflex_back.dto.request.RawMaterialRequest;
+import com.dev.autoflex_back.dto.response.MessageResponse;
 import com.dev.autoflex_back.dto.response.RawMaterialResponse;
 import com.dev.autoflex_back.entity.RawMaterial;
 import com.dev.autoflex_back.repository.RawMaterialRepository;
@@ -51,8 +52,13 @@ public class RawMaterialServiceImpl implements RawMaterialService{
     }
 
     @Override
-    public void delete(Long id) {
-        
+    public MessageResponse delete(Long id) {
+        if(!rawMaterialRepository.existsById(id)){
+            throw new RuntimeException("Raw Material not found");
+       }
+
+       rawMaterialRepository.deleteById(id);
+       return new MessageResponse("Raw Material deleted successfully");
     }
 
 }
