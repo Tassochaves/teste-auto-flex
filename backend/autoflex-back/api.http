@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:8080/api/v1
 
-### Create product
+### Creates a product and combines it with raw materials.
 POST {{baseUrl}}/products
 Content-Type: application/json
 
@@ -9,8 +9,20 @@ Content-Type: application/json
   "name": "Mesa de Escritório",
   "price": 450.00,
   "materials": [
-    { "rawMaterialId": 1, "requiredQuantity": 4 },
-    { "rawMaterialId": 2, "requiredQuantity": 10 }
+    { "rawMaterialId": 1, "requiredQuantity": 4 }
+  ]
+}
+
+### Update the product and its materials.
+PUT {{baseUrl}}/products/1
+Content-Type: application/json
+
+{
+  "code": "PRD-002",
+  "name": "Mesa de Escritório",
+  "price": 450.00,
+  "materials": [
+    { "rawMaterialId": 3, "requiredQuantity": 5 }
   ]
 }
 

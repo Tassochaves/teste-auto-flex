@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,8 @@ import com.dev.autoflex_back.dto.request.ProductRequest;
 import com.dev.autoflex_back.dto.response.MessageResponse;
 import com.dev.autoflex_back.dto.response.ProductResponse;
 import com.dev.autoflex_back.service.ProductService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/products")
@@ -46,6 +49,12 @@ public class ProductController {
 
         List<ProductResponse> products = productService.findAllSortedByPrice();
         return ResponseEntity.status(HttpStatus.OK).body(products);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long id, @RequestBody ProductRequest request) {
+        ProductResponse updatedProduct = productService.update(id, request);
+        return ResponseEntity.ok(updatedProduct);
     }
 
 }

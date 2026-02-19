@@ -81,7 +81,37 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public ProductResponse update(Long id, ProductRequest request) {
-        return null;
+
+        Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
+
+        if (!product.getCode().equalsIgnoreCase(request.code()) && productRepository.existsByCodeIgnoreCase(request.code())){
+            throw new RuntimeException("Product code already exists: " + request.code());
+        }
+
+        product.setCode(request.code());
+        product.setName(request.name());
+        product.setPrice(request.price());
+
+        product.getMaterials().clear();
+
+        if (request.materials() == null || request.materials().isEmpty()){
+            throw new RuntimeException("Product must have at least one raw material");
+        }
+        
+        for (ProductMaterialsRequest materialsRequest : request.materials()) {
+            RawMaterial rawMaterial = materialRepository.findById(materialsRequest.rawMaterialId())
+                    .orElseThrow(() -> new RuntimeException("Material not found: " + materialsRequest.rawMaterialId()));
+
+            ProductMaterials newAssociation = ProductMaterials.builder()
+                    .product(product)
+                    .rawMaterial(rawMaterial)
+                    .requiredQuantity(materialsRequest.requiredQuantity())
+                    .build();
+
+            product.getMaterials().add(newAssociation);
+        }
+
+        return ProductResponse.fromEntity(productRepository.save(product));
     }
 
     @Override
