@@ -61,7 +61,7 @@ public class ProductServiceImpl implements ProductService{
             ProductMaterials productMaterials = ProductMaterials.builder()
                                 .product(product)
                                 .rawMaterial(rawMaterial)
-                                .requiredQuantity(materialsRequest.quantity())
+                                .requiredQuantity(materialsRequest.requiredQuantity())
                                 .build();
             
             product.getMaterials().add(productMaterials);

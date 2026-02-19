@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public record ProductMaterialsRequest(
     Long rawMaterialId,
-    BigDecimal quantity
+    BigDecimal requiredQuantity
 ) {
 
 }
