@@ -1,12 +1,15 @@
 package com.dev.autoflex_back.entity;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -42,4 +45,7 @@ public class RawMaterial {
     @PositiveOrZero(message = "Stock quantity cannot be negative")
     @Column(name = "stock_quantity", nullable = false, precision = 15, scale = 3)
     private BigDecimal stockQuantity;
+
+    @OneToMany(mappedBy = "rawMaterial")
+    private List<ProductMaterials> productAssociations = new ArrayList<>();
 }
