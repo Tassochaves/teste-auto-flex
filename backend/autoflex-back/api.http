@@ -5,12 +5,11 @@ POST {{baseUrl}}/products
 Content-Type: application/json
 
 {
-  "code": "PRD-004",
-  "name": "Mesa de Escritório",
-  "price": 450.00,
+  "code": "PRD-002",
+  "name": "Computador",
+  "price": 950.00,
   "materials": [
-    { "rawMaterialId": 2, "requiredQuantity": 14 },
-    { "rawMaterialId": 1, "requiredQuantity": 10 }
+    { "rawMaterialId": 1, "requiredQuantity": 25 }
   ]
 }
 
@@ -20,10 +19,10 @@ Content-Type: application/json
 
 {
   "code": "PRD-002",
-  "name": "Mesa de Escritório",
+  "name": "Computador",
   "price": 450.00,
   "materials": [
-    { "rawMaterialId": 2, "requiredQuantity": 15 }
+    { "rawMaterialId": 2, "requiredQuantity": 15 },
     { "rawMaterialId": 1, "requiredQuantity": 25 }
   ]
 }
@@ -41,9 +40,9 @@ POST {{baseUrl}}/materials
 Content-Type: application/json
 
 {
-    "code": "RM002",
-    "name": "Parafuso",
-    "stockQuantity": 10
+    "code": "RM003",
+    "name": "Mouse",
+    "stockQuantity": 5
 }
 
 ### Delete materials
