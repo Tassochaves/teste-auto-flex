@@ -5,11 +5,12 @@ POST {{baseUrl}}/products
 Content-Type: application/json
 
 {
-  "code": "PRD-001",
+  "code": "PRD-004",
   "name": "Mesa de Escritório",
   "price": 450.00,
   "materials": [
-    { "rawMaterialId": 1, "requiredQuantity": 4 }
+    { "rawMaterialId": 2, "requiredQuantity": 14 },
+    { "rawMaterialId": 1, "requiredQuantity": 10 }
   ]
 }
 
@@ -22,7 +23,8 @@ Content-Type: application/json
   "name": "Mesa de Escritório",
   "price": 450.00,
   "materials": [
-    { "rawMaterialId": 3, "requiredQuantity": 5 }
+    { "rawMaterialId": 2, "requiredQuantity": 15 }
+    { "rawMaterialId": 1, "requiredQuantity": 25 }
   ]
 }
 
@@ -40,8 +42,8 @@ Content-Type: application/json
 
 {
     "code": "RM002",
-    "name": "Parafusos",
-    "stockQuantity": 20
+    "name": "Parafuso",
+    "stockQuantity": 10
 }
 
 ### Delete materials
