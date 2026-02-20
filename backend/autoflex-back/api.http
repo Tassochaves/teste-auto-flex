@@ -20,10 +20,9 @@ Content-Type: application/json
 {
   "code": "PRD-002",
   "name": "Computador",
-  "price": 450.00,
+  "price": 950.00,
   "materials": [
-    { "rawMaterialId": 2, "requiredQuantity": 15 },
-    { "rawMaterialId": 1, "requiredQuantity": 25 }
+    { "rawMaterialId": 3, "requiredQuantity": 15 }
   ]
 }
 
@@ -32,7 +31,7 @@ GET {{baseUrl}}/products
 Content-Type: application/json
 
 ### Delete product
-DELETE {{baseUrl}}/products/2
+DELETE {{baseUrl}}/products/1
 Content-Type: application/json
 
 ### Creates raw materials
@@ -40,9 +39,9 @@ POST {{baseUrl}}/materials
 Content-Type: application/json
 
 {
-    "code": "RM003",
-    "name": "Mouse",
-    "stockQuantity": 5
+    "code": "RM005",
+    "name": "Bateria",
+    "stockQuantity": 15
 }
 
 ### Delete materials

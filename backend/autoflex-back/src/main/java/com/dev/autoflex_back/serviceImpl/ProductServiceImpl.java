@@ -54,20 +54,17 @@ public class ProductServiceImpl implements ProductService{
             .materials(new ArrayList<>())
             .build();
 
-        for (ProductMaterialsRequest materialsRequest : request.materials()) {
-            RawMaterial rawMaterial = materialRepository.findById(materialsRequest.rawMaterialId())
-                            .orElseThrow(() -> new RuntimeException("Material not found: " + materialsRequest.rawMaterialId()));
+    
+        request.materials().forEach(materialRequest -> {
+            RawMaterial rawMaterial = materialRepository.findById(materialRequest.rawMaterialId())
+                    .orElseThrow(() -> new RuntimeException("Material not found: " + materialRequest.rawMaterialId()));
 
-            ProductMaterials productMaterials = ProductMaterials.builder()
-                                .product(product)
-                                .rawMaterial(rawMaterial)
-                                .requiredQuantity(materialsRequest.requiredQuantity())
-                                .build();
-            
-            product.getMaterials().add(productMaterials);
-        }
+            product.addMaterial(rawMaterial, materialRequest.requiredQuantity());
+        });
 
-        return ProductResponse.fromEntity(productRepository.save(product));
+        Product savedProduct = productRepository.save(product);
+
+        return ProductResponse.fromEntity(savedProduct);
     }
 
     private void validateRequest(ProductRequest request) {
