@@ -13,4 +13,12 @@ export class MaterialService {
   findAll(): Observable<Material[]> {
     return this._httpClient.get<Material[]>(this.apiUrl);
   }
+
+  save(material: Partial<Material>): Observable<Material> {
+    return this._httpClient.post<Material>(this.apiUrl, material);
+  }
+
+  delete(id: number): Observable<void> {
+    return this._httpClient.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

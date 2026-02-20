@@ -25,7 +25,7 @@ export class ProductForm {
     name: new FormControl('', { validators: [Validators.required], nonNullable: true }),
     price: new FormControl<number | null>(null, { validators: [Validators.required], nonNullable: true }),
     materialId: new FormControl<number | null>(null, { validators: [Validators.required], nonNullable: true }),
-    requiredQuantity: new FormControl<number | null>(null, { validators: [Validators.required], nonNullable: true })
+    requiredQuantity: new FormControl<number>(1, { validators: [Validators.required], nonNullable: true })
   });
 
   ngOnInit(): void {
