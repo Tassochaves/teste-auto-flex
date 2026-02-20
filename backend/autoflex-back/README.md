@@ -36,9 +36,11 @@ O projeto segue o padrão de **Arquitetura em Camadas** para garantir a separaç
 ### Passos para execução
 1. Acesse a pasta do backend via terminal:
    ```bash
-   cd backend
+   cd backend/autoflex-back
+
 2. Execute a aplicação com o Maven ou pela interface gráfica de sua IDE:
     ```bash
     ./mvnw spring-boot:run
 
-3. A API estará disponível em http://localhost:8080
+3. A [URL] base da API estará disponível em: http://localhost:8080
+4. A página da interface do usuário Swagger estará disponível em [URL]: http://localhost:8080/swagger-ui/index.html
