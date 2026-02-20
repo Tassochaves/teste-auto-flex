@@ -1,5 +1,5 @@
 <div class="space-y-8 max-w-5xl">
-  <app-product-form></app-product-form>
+  <app-product-form (productSaved)="list.returnsAllProducts()"></app-product-form>
 
-  <app-product-list></app-product-list>
+  <app-product-list #list></app-product-list>
 </div>

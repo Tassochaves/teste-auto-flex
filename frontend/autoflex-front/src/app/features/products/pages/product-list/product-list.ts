@@ -9,7 +9,7 @@ import { Product } from '../../models/product.model';
   styleUrl: './product-list.scss',
 })
 export class ProductList {
-  private readonly _service = inject(ProductService);
+  private readonly _productService = inject(ProductService);
 
   productsList = signal<Product[]>([]);
   error = signal<string | null>(null);
@@ -19,7 +19,7 @@ export class ProductList {
   }
 
   returnsAllProducts() {
-    this._service.findAll().subscribe({
+    this._productService.findAll().subscribe({
       next: (data) => {
         this.productsList.set(data);
       },
@@ -32,6 +32,19 @@ export class ProductList {
   onEdit(): void{
   }
 
-  onDelete(): void{
+  onDelete(id: number): void{
+    if (confirm('Deseja realmente excluir este produto?')) {
+      
+      this._productService.delete(id).subscribe({
+        next: () => {
+          this.returnsAllProducts();
+          alert('Produto removido com sucesso!');
+        },
+        error: (err) => {
+          console.error('Erro ao excluir:', err);
+          alert('Não foi possível excluir o produto.');
+        }
+      });
+    }
   }
 }

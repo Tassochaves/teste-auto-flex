@@ -13,4 +13,12 @@ export class ProductService {
   findAll(): Observable<Product[]>{
     return this._httpClient.get<Product[]>(this.apiUrl);
   }
+
+  save(product: Partial<Product>): Observable<Product> {
+    return this._httpClient.post<Product>(this.apiUrl, product);
+  }
+
+  delete(id: number): Observable<void> {
+    return this._httpClient.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }
