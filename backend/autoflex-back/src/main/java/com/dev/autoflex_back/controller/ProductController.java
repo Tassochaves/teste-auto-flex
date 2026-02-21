@@ -18,8 +18,6 @@ import com.dev.autoflex_back.dto.response.MessageResponse;
 import com.dev.autoflex_back.dto.response.ProductResponse;
 import com.dev.autoflex_back.service.ProductService;
 
-import jakarta.validation.Valid;
-
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductController {
